@@ -15,7 +15,7 @@ import { TypeBlogPostListingFields } from './content-types';
 export class AppComponent {
   title = 'portfolio-website';
 
-  blogPostListings: Entry<TypeBlogPostListingFields>[] | undefined;
+  blogPostListings: Entry<TypeBlogPostListingFields>[] = []; // Initialize with an empty array;
 
   constructor(public contentService: ContentfulService) {}
 
@@ -23,9 +23,16 @@ export class AppComponent {
     this.contentService.getBlogPostListings().subscribe({
       next: (entryCollection) => {
         this.blogPostListings = entryCollection.items;
-        console.log(this.blogPostListings);
+      },
+      complete: () => {
+        console.log('Datenstream abgeschlossen');
       },
     });
+  }
+
+  getFeaturedImageUrl(entry: Entry<TypeBlogPostListingFields>): string | null {
+    const featuredImage = entry.fields.featuredImage;
+    return featuredImage?.['fields']?.['file']?.['url'] ?? null; // Nullish Coalescing für mehr Klarheit
   }
 
   ngOnInit(): void {

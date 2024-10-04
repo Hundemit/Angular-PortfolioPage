@@ -232,6 +232,20 @@
   </div>
 </main>
 
+<div
+  *ngFor="let item of blogPostListings"
+  class="p-4 bg-white shadow-md rounded-lg mb-4"
+>
+  <h2 class="text-2xl font-bold">{{ item.fields.title }}</h2>
+  <p>{{ item.fields.shortDescription }}</p>
+
+  <img
+    *ngIf="getFeaturedImageUrl(item)"
+    [src]="getFeaturedImageUrl(item)"
+    alt="{{ item['fields']['title'] }}"
+  />
+</div>
+
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->

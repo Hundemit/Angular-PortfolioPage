@@ -6,8 +6,8 @@ export interface TypeBlogPostListingFields {
     blogPost?: Contentful.EntryFields.RichText;
     shortDescription?: Contentful.EntryFields.Text;
     date?: Contentful.EntryFields.Date;
+    featuredImage?: Contentful.EntryFields.AssetLink;
   };
-
   contentTypeId: string;
 }
 
