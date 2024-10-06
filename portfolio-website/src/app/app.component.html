@@ -228,13 +228,65 @@
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
     </div>
-    <div class="divider" role="separator" aria-label="Divider"></div>
   </div>
 </main>
 
+<div class="flex gap-4 mx-auto w-fit">
+  <button
+    (click)="getBlogPostById('24K074hJ0Wjoh9Lq4cyWdd')"
+    class="bg-red-400 p-5 rounded-md"
+  >
+    1
+  </button>
+  <button
+    (click)="getBlogPostById('4YpnxRJ6o0uhD0pxY7hHRF')"
+    class="bg-red-400 p-5 rounded-md"
+  >
+    2
+  </button>
+  <button class="bg-red-400 p-5 rounded-md">3</button>
+  <button class="bg-red-400 p-5 rounded-md">4</button>
+</div>
+
 <div
+  *ngIf="blogPost != undefined"
+  class="p-4 bg-white shadow-xl rounded-lg mb-4 w-1/3 mx-auto"
+>
+  <h2 class="text-2xl font-bold">{{ blogPost.fields.title }}</h2>
+  <p>{{ blogPost.fields.shortDescription }}</p>
+
+  <img
+    *ngIf="blogPost.fields.featuredImage"
+    [src]="getFeaturedImageUrl(blogPost)"
+    alt="{{ blogPost.fields.title }}"
+  />
+
+  <ng-container *ngIf="blogPost?.fields?.tags">
+    <div *ngFor="let tag of getTags(blogPost)">
+      <p>{{ tag }}</p>
+    </div>
+  </ng-container>
+
+  <!-- <div *ngFor="let item of blogPost.fields?.content?.['content']" class="">
+    <p *ngIf="item.nodeType == 'paragraph'">{{ item.content[0].value }}</p>
+
+    <img
+      *ngIf="item.nodeType == 'embedded-entry-block'"
+      [src]="item.data.target.fields.image.fields.file.url"
+      alt="{{ item.data.target.fields.image.fields.file.url }}"
+    />
+  </div> -->
+
+  <div *ngFor="let item of contentItems">
+    <p *ngIf="item.type === 'paragraph'">{{ item.value }}</p>
+
+    <img *ngIf="item.type === 'image'" [src]="item.url" [alt]="item.url" />
+  </div>
+</div>
+
+<!-- <div
   *ngFor="let item of blogPostListings"
-  class="p-4 bg-white shadow-md rounded-lg mb-4"
+  class="p-4 bg-white shadow-xl rounded-lg mb-4 w-1/3 mx-auto"
 >
   <h2 class="text-2xl font-bold">{{ item.fields.title }}</h2>
   <p>{{ item.fields.shortDescription }}</p>
@@ -244,7 +296,11 @@
     [src]="getFeaturedImageUrl(item)"
     alt="{{ item['fields']['title'] }}"
   />
-</div>
+
+  <div *ngFor="let tag of getTags(item)">
+    <p>{{ tag }}</p>
+  </div>
+</div> -->
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->

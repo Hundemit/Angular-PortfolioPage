@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ContentfulService } from './contentful.service';
-import { Entry } from 'contentful';
+import * as Contentful from 'contentful';
 import { CommonModule } from '@angular/common'; // Füge dies hinzu
 import { TypeBlogPostListingFields } from './content-types';
 
@@ -15,7 +15,11 @@ import { TypeBlogPostListingFields } from './content-types';
 export class AppComponent {
   title = 'portfolio-website';
 
-  blogPostListings: Entry<TypeBlogPostListingFields>[] = []; // Initialize with an empty array;
+  blogPostListings: Contentful.Entry<TypeBlogPostListingFields>[] = []; // Initialize with an empty array;
+  blogPost!: Contentful.Entry<TypeBlogPostListingFields>;
+  blogPost2!: Contentful.Entry<TypeBlogPostListingFields>;
+  blogContent!: Document | undefined;
+  contentItems: any[] = []; // Speichert Paragraphs und Bilder in der richtigen Reihenfolge
 
   constructor(public contentService: ContentfulService) {}
 
@@ -23,6 +27,10 @@ export class AppComponent {
     this.contentService.getBlogPostListings().subscribe({
       next: (entryCollection) => {
         this.blogPostListings = entryCollection.items;
+
+        this.blogPostListings.forEach((el) => {
+          console.log(el.fields?.content);
+        });
       },
       complete: () => {
         console.log('Datenstream abgeschlossen');
@@ -30,12 +38,37 @@ export class AppComponent {
     });
   }
 
-  getFeaturedImageUrl(entry: Entry<TypeBlogPostListingFields>): string | null {
-    const featuredImage = entry.fields.featuredImage;
-    return featuredImage?.['fields']?.['file']?.['url'] ?? null; // Nullish Coalescing für mehr Klarheit
+  getBlogPostById(blogPostId: string) {
+    this.contentService.getBlogPostById(blogPostId).subscribe({
+      next: (entry: Contentful.Entry<TypeBlogPostListingFields>) => {
+        this.blogPost = entry;
+        this.blogContent = this.blogPost.fields.content as Document | undefined;
+        this.contentItems = this.contentService.transformBlogContent(
+          this.blogPost
+        );
+      },
+      error: (err) => {
+        console.error('Fehler beim Laden des Blogposts:', err);
+      },
+    });
+  }
+
+  getDocumentToHtmlString(blogContent: Document | undefined) {
+    // return this.contentService.getDocumentToHtmlString(this.blogContent);
+  }
+
+  getFeaturedImageUrl(
+    entry: Contentful.Entry<TypeBlogPostListingFields>
+  ): string | null {
+    return this.contentService.getFeaturedImageUrl(entry);
+  }
+
+  getTags(entry: Contentful.Entry<TypeBlogPostListingFields>): string[] {
+    return this.contentService.getTags(entry);
   }
 
   ngOnInit(): void {
     this.getBlogPostListings();
+    this.getBlogPostById('4YpnxRJ6o0uhD0pxY7hHRF');
   }
 }
