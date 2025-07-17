@@ -1,0 +1,145 @@
+<header id="header" class="bg-dark-light z-50 fixed pt-1 sm:pt-4">
+  <div
+    class="bg-dark flex justify-between items-center rounded-t-xl p-6 sm:pr-6 shadow shadow-dark"
+  >
+    <!-- LOGO -->
+    <div
+      class="flex justify-center items-center gap-4 z-50 sm:w-auto duration-700"
+    >
+      <a
+        inViewport
+        (inViewportAction)="iVAS.animateSectionOnVisibility($event, '2.2s')"
+        routerLink="/"
+        id="logoButton"
+        class="inactive--from-bottom"
+      >
+        <img
+          class="h-[28px] duration-700 hover:rotate-12 hover:scale-110"
+          src="assets/images/logo/Logo.svg"
+          alt=""
+        />
+      </a>
+      <!-- TEXT -->
+      <div class="flex flex-col h-[28px] justify-between gap">
+        <p
+          inViewport
+          (inViewportAction)="iVAS.animateSectionOnVisibility($event, '2.5s')"
+          class="text-xs text-text-primary font-bold leading-[10px] inactive--from-right"
+        >
+          Jan Hindemit
+        </p>
+
+        <a
+          routerLink="/"
+          fragment="kontakt"
+          class="text-xs font-medium flex items-center gap-2 leading-[10px] hover:underline duration-700"
+        >
+          <!-- PUNKT PING -->
+          <div
+            inViewport
+            (inViewportAction)="iVAS.animateSectionOnVisibility($event, '1.6s')"
+            class="w-[10px] h-[10px] rounded-full bg-[#58dd29] inactive--from-right"
+          >
+            <div
+              class="w-[10px] h-[10px] rounded-full bg-[#58dd29] animate-ping"
+            ></div>
+          </div>
+          <span
+            inViewport
+            (inViewportAction)="iVAS.animateSectionOnVisibility($event, '1.7s')"
+            class="text-text-primary inactive--from-right"
+          >
+            Verfügbar!
+          </span>
+          <img
+            inViewport
+            (inViewportAction)="iVAS.animateSectionOnVisibility($event, '1.8s')"
+            class="h-[15px] -rotate-90 duration-700 hover:rotate-12 hover:scale-110 inactive--from-bottom"
+            src="assets/images/logo/hand-pointing.svg"
+            alt=""
+          />
+        </a>
+      </div>
+    </div>
+    <!-- Menu Button -->
+    <div
+      inViewport
+      (inViewportAction)="iVAS.animateSectionOnVisibility($event, '3s')"
+      class="inactive--from-right z-50 cursor-pointer"
+    >
+      <div
+        id="menuOpenButton"
+        class="menu-icon h-[25px] sm:h-[40px] w-[40px] relative duration-200"
+        (click)="toggleMenu()"
+      >
+        <label for="menu_checkbox" class="sr-only">Menü öffnen/schließen</label>
+        <input
+          id="menu_checkbox"
+          class="menu-icon__cheeckbox"
+          type="checkbox"
+          [checked]="isActiveMenu"
+        />
+        <div>
+          <span class="bg-text-primary"></span>
+          <span class="bg-text-primary"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <div
+      id="menu-container"
+      [ngClass]="{ invisible: !isActiveMenu }"
+      class="sm:bg-[#00000094] w-screen h-screen fixed top-0 left-0 duration-100 pt-1 sm:pt-0"
+      (click)="toggleMenu()"
+    >
+      <nav
+        (click)="$event.stopPropagation()"
+        id="menu"
+        [@MenuCardOpenClose]="isActiveMenu ? 'open' : 'closed'"
+        class="sm:fixed w-full h-full flex flex-col items-end bg-dark-light box-border gap-10 sm:z-10 sm:h-auto sm:w-96 sm:right-6 sm:top-6 sm:rounded-xl shadow-xl px-1 sm:px-10 sm:py-5 duration-200"
+      >
+        <div
+          class="w-full h-full px-5 sm:px-0 bg-dark sm:bg-dark-light rounded-t-xl sm:rounded-xl flex flex-col"
+        >
+          <div
+            class="bg-dark-light h-full mb-5 p-5 mt-16 rounded-xl sm:gap-24 w-full box-border sm:p-0 sm:shadow-none sm:mt-0 duration-200 flex flex-col shadow-2xl justify-between"
+          >
+            <div class="gap-5 flex flex-col text-xl">
+              <a
+                *ngFor="let item of menuItems"
+                (click)="toggleMenu()"
+                class="menuContainerListLink w-[130px] hover:w-[150px] text-text-primary decoration-red duration-500 transition-all font-medium"
+                [routerLink]="item.href"
+                [fragment]="item.fragment"
+              >
+                {{ item.label }}
+                <div
+                  class="h-[4px] w-full rounded-xl"
+                  [ngClass]="item.colorClass"
+                ></div>
+              </a>
+            </div>
+            <div class="text-xl flex flex-col gap-2">
+              <h1 class="text-gray-400 font-bold">SAY HELLO</h1>
+              <div class="h-14 w-full flex gap-2">
+                <a
+                  *ngFor="let social of socialLinks"
+                  [href]="social.href"
+                  target="_blank"
+                  class="h-14 w-full bg-dark-container hover:bg-dark flex justify-center items-center duration-700 rounded-md"
+                >
+                  <img
+                    class="h-[20px] duration-700 hover:rotate-12 hover:scale-110"
+                    [src]="'assets/images/logo/' + social.icon"
+                    alt=""
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>

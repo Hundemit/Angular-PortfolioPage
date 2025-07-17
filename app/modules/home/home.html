@@ -1,0 +1,490 @@
+<div
+  id="hero-section"
+  class="mx-auto lg:h-[98vh] max-w-screen-xl container justify-end lg:justify-between flex flex-col gap-5 lg:flex-row items-start lg:items-center duration-200 min-h-[60px] lg:min-h-[580px] sm:min-h-[890px] relative"
+>
+  <!-- hero-text-container -->
+  <div
+    id="hero-text-container"
+    class="flex flex-col gap-5 sm:gap-7 mt-24 lg:mt-0"
+  >
+    <div
+      class="text-text-primary flex flex-col gap-2 sm:gap-4 duration-200 text-[27px] sm:text-5xl 2xl:text-6xl"
+    >
+      <span
+        inViewport
+        (inViewportAction)="iVAS.animateSectionOnVisibility($event, '0.5s')"
+        class="w-fit inactive--from-top"
+      >
+        <p class="titleFont hero-title">Hey!</p>
+        <div class="w-full bg-dark-container rounded-sm title-underline"></div>
+      </span>
+      <span
+        inViewport
+        (inViewportAction)="iVAS.animateSectionOnVisibility($event, '0.6s')"
+        class="w-fit inactive--from-top"
+      >
+        <p class="titleFont hero-title">Ich bin Jan.</p>
+        <div class="w-full bg-dark-container rounded-sm title-underline"></div>
+      </span>
+    </div>
+    <p
+      inViewport
+      (inViewportAction)="iVAS.animateSectionOnVisibility($event, '0.7s')"
+      class="text-sm text-text-primary lg:text-lg font-medium max-w-[500px] duration-700 inactive--from-top"
+    >
+      Ich liebe es, kreative Ideen in coole, benutzerfreundliche Software zu
+      verwandeln und arbeite dabei gerne im Team, um gemeinsam Großartiges zu
+      schaffen.
+    </p>
+
+    <div
+      class="w-full lg:flex-row flex-col gap-4 absolute lg:static bottom-5 left-0 hidden lg:flex"
+    >
+      <!-- Button -->
+      <a
+        inViewport
+        (inViewportAction)="
+          iVAS.animateSectionOnVisibility($event, '1.2s', '0.4s')
+        "
+        routerLink="/"
+        fragment="kontakt"
+        class="h-12 w-full lg:w-fit hover:scale-105 duration-700 md:px-0 lg:px-0 w-full bg-dark-container rounded-md duration-700 flex justify-center items-center inactive--from-bottom"
+      >
+        <p class="text-text-primary font-medium px-10">Kontaktiere mich.</p>
+      </a>
+      <!-- Button -->
+      <a
+        inViewport
+        (inViewportAction)="
+          iVAS.animateSectionOnVisibility($event, '1.4s', '0.4s')
+        "
+        href="assets/documents/CV-Jan-Hindemit.pdf"
+        target="_blank"
+        download="Lebenslauf-Jan-Hindemit.pdf"
+        class="h-12 w-full lg:w-fit hover:scale-105 duration-700 px-10 flex gap-2 justify-center items-center border-light rounded-md bg-dark-container inactive--from-bottom"
+      >
+        <p class="text-text-primary font-medium">Lebenslauf</p>
+        <img
+          class="h-[20px] duration-700"
+          src="assets/images/logo/arrow-down-to-bracket.svg"
+          alt=""
+        />
+      </a>
+    </div>
+  </div>
+  <!-- IMG -->
+  <div
+    inViewport
+    (inViewportAction)="iVAS.animateSectionOnVisibility($event, '2s', '0.4s')"
+    class="relative lg:aspect-square aspect-auto w-full lg:w-auto lg:h-96 lg:max-w-[650px] max-w-[500px] duration-700 mx-auto lg:mx-0 object-cover rounded-xl inactive"
+  >
+    <!-- Bild -->
+    <img
+      src="https://janhindemit.de/wp-content/uploads/2025/01/bester-balck-FJUI1J17u-transformed3.png"
+      class="relative lg:aspect-square aspect-auto w-full lg:w-auto lg:h-96 lg:max-w-[650px] max-w-[500px] duration-700 mx-auto lg:mx-0 object-cover"
+      alt="..."
+    />
+
+    <!-- Gradient Overlay -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-dark via-transparent via-30% to-transparent w-auto mx-auto"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-tr from-dark from-10% via-transparent via-35% to-transparent w-auto mx-auto"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-tl from-dark from-10% via-transparent via-35% to-transparent w-auto mx-auto"
+    ></div>
+  </div>
+
+  <div class="w-full lg:flex-row flex-col gap-4 lg:hidden flex">
+    <!-- Button -->
+    <a
+      href="#kontakt"
+      class="hero-button h-12 w-full lg:w-fit hover:scale-105 duration-700 md:px-0 lg:px-0"
+    >
+      <div
+        id="button-animation"
+        class="w-full h-full rounded-md duration-700 flex justify-center items-center"
+      >
+        <p class="text-regal-blue font-medium px-10">Kontaktiere mich.</p>
+      </div>
+    </a>
+    <!-- Button -->
+    <a
+      href="assets/documents/CV-Jan-Hindemit.pdf"
+      download="Lebenslauf-Jan-Hindemit.pdf"
+      class="h-12 w-full lg:w-fit hover:scale-105 duration-700 px-10 flex gap-2 justify-center items-center border-light rounded-md bg-[#24292F]"
+    >
+      <p class="text-light font-medium">Lebenslauf</p>
+      <img
+        class="h-[20px] duration-700 hover:rotate-12 hover:scale-110"
+        src="assets/images/logo/arrow-down-to-bracket.svg"
+        alt=""
+      />
+    </a>
+  </div>
+</div>
+
+<app-myprojects [count]="2"></app-myprojects>
+<!-- Buttons myprojects -->
+<div
+  class="flex flex-col justify-center content-center sm:flex-row gap-8 mt-12 mx-auto w-fit"
+>
+  <a
+    routerLink="/myprojects"
+    fragment="myprojects"
+    class="h-12 w-fit bg-dark-container hover:bg-dark flex gap-2 justify-center items-center duration-700 rounded-md px-4"
+  >
+    <p class="text-lg text-text-primary font-medium">Meine Projekte →</p>
+  </a>
+  <a
+    href="https://hundemit.github.io/"
+    target="_blank"
+    class="mx-auto w-fit duration-700 animate-rotate h-12 text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30"
+  >
+    <svg
+      class="w-4 h-4 me-2"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+    <p class="text-lg font-medium">Github Page</p>
+  </a>
+</div>
+
+<div
+  id="aboutme"
+  class="mt-16 pt-32 sm:mt-64 sm:pt-32 bg-dark rounded-2xl duration-700"
+>
+  <!-- BLOCK -->
+  <div
+    class="py-32 relative isolate overflow-hidden sm:px-6 lg:overflow-visible lg:px-0"
+  >
+    <div class="absolute inset-0 -z-10 overflow-hidden text-light">
+      <svg
+        class="absolute left-[max(50%,25rem)] top-0 h-[128rem] w-[128rem] -translate-x-1/2 stroke-[#222222] [mask-image:radial-gradient(100rem_65rem_at_center,white,transparent)]"
+        aria-hidden="true"
+      >
+        <defs>
+          <pattern
+            id="e813992c-7d03-4cc4-a2bd-151760b470a0"
+            width="200"
+            height="200"
+            x="50%"
+            y="-1"
+            patternUnits="userSpaceOnUse"
+          >
+            <path d="M100 200V.5M.5 .5H200" fill="none" />
+          </pattern>
+          <mask id="radial-mask" maskUnits="userSpaceOnUse">
+            <rect width="100%" height="100%" fill="white" />
+            <circle cx="50%" cy="50%" r="40%" fill="black" />
+          </mask>
+        </defs>
+        <svg x="50%" y="-1" class="overflow-visible fill-[#2222224d]">
+          <path
+            d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z"
+            stroke-width="0"
+          />
+          <path
+            d="M300.5 200h201v201h-201Z M-500.5 400h201v201h-201Z M100.5 600h201v201h-201Z M900.5 200h201v201h-201Z"
+            stroke-width="0"
+          />
+        </svg>
+        <rect
+          width="100%"
+          height="100%"
+          stroke-width="0"
+          fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)"
+        />
+      </svg>
+    </div>
+    <div
+      class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 lg:px-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10"
+    >
+      <!-- HEAdLINE -->
+      <div
+        class="duration-700 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8"
+      >
+        <div class="lg:max-w-lg">
+          <p class="text-base/7 font-semibold text-text-primary">This is me.</p>
+          <h1
+            class="whitespace-nowrap text-text-primary mt-2 text-pretty font-semibold tracking-tight text-light text-4xl sm:text-5xl titleFont headline-underline leading-[3.2rem] sm:leading-[4rem] w-fit px-1 sm:px-2"
+          >
+            Work Experience.
+          </h1>
+          <p class="text-text-primary text-lg max-w-xl mt-6 mb-8">
+            Meine Programmierkenntnisse habe ich durch kontinuierliches Lernen,
+            praxisnahe Projekte und mein Studium der
+            <span class="text-color3 underline">"Medieninformatik"</span>
+            aufgebaut.
+          </p>
+          <div class="px-2">
+            <ol class="relative">
+              <li class="pb-10 ps-4 relative border-s border-text-primary">
+                <div
+                  class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border border-light bg-text-primary"
+                ></div>
+                <time
+                  class="mb-1 text-sm font-normal leading-none text-gray-500!"
+                  >März 2023 - jetzt</time
+                >
+                <h3
+                  class="flex gap-2 items-center mb-1 text-lg font-semibold text-white"
+                >
+                  <span class="w-fit">Freelancer Web- und Medienberatung </span>
+                  <span
+                    class="whitespace-nowrap flex items-center gap-2 text-xs font-medium me-2 px-2.5 py-0.5 rounded bg-green-900 text-green-300!"
+                    >Aktiv
+                  </span>
+                </h3>
+                <p class="mb-4 text-base font-normal text-gray-400!">
+                  Erstellung und Anpassung von WordPress-Websites sowie Beratung
+                  zu Social-Media-Auftritten und Webseiten-Konzeption.
+                  Gelegentliche Projekte neben dem Studium.
+                </p>
+              </li>
+              <li class="pb-10 ps-4 relative border-s border-text-primary">
+                <div
+                  class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border border-text-primary bg-text-primary"
+                ></div>
+                <time
+                  class="mb-1 text-sm font-normal leading-none text-gray-500!"
+                  >Januar 2022 - November 2022</time
+                >
+                <h3
+                  class="flex gap-2 items-center mb-1 text-lg font-semibold text-white"
+                >
+                  Werkstudent
+                </h3>
+                <p class="text-base font-normal text-gray-400!">
+                  <span class="font-normal">Northern-Lights GmbH</span> <br />
+                  Webentwicklung und Interfacedesign mit Fokus auf
+                  benutzerfreundliche digitale Lösungen.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <app-techstack
+        class="rounded-lg lg:sticky lg:top-44 lg:col-start-2 lg:row-span-2 lg:row-start-1 overflow-hidden max-w-2xl backdrop-blur-md"
+      ></app-techstack>
+
+      <!-- MAIN TEXT -->
+      <div
+        class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8"
+      >
+        <div class="lg:pr-4">
+          <div class="max-w-xl text-base/7 px-2 text-text-primary lg:max-w-lg">
+            <ul role="list" class="space-y-8 text-text-primary">
+              <li class="flex gap-x-3">
+                <svg
+                  class="mt-1 size-5 flex-none"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14"
+                  />
+                </svg>
+
+                <span
+                  ><strong class="font-semibold text-text-primary"
+                    >Innovationsfreude.</strong
+                  >
+                  Ich liebe es, neue Ideen umzusetzen und kreative Lösungen zu
+                  finden, die echten Mehrwert schaffen.
+                </span>
+              </li>
+              <li class="flex gap-x-3">
+                <svg
+                  class="mt-1 size-5 flex-none text-text-primary"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4 2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.82-3.096a5.51 5.51 0 0 0-2.797-6.293 3.5 3.5 0 1 1 2.796 6.292ZM19.5 18h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1a5.503 5.503 0 0 1-.471.762A5.998 5.998 0 0 1 19.5 18ZM4 7.5a3.5 3.5 0 0 1 5.477-2.889 5.5 5.5 0 0 0-2.796 6.293A3.501 3.501 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4 2 2 0 0 0 2 2h.5a5.998 5.998 0 0 1 3.071-5.238A5.505 5.505 0 0 1 7.1 12Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+
+                <span
+                  ><strong class="font-semibold text-text-primary"
+                    >Teamfähigkeit.</strong
+                  >
+                  Zusammenarbeit im Team motiviert mich, und ich schätze den
+                  Austausch, um gemeinsam die besten Ergebnisse zu
+                  erzielen.</span
+                >
+              </li>
+              <li class="flex gap-x-3">
+                <svg
+                  class="mt-1 size-5 flex-none text-text-primary"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12 2a7 7 0 0 0-7 7 3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h1a1 1 0 0 0 1-1V9a5 5 0 1 1 10 0v7.083A2.919 2.919 0 0 1 14.083 19H14a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h1a2 2 0 0 0 1.732-1h.351a4.917 4.917 0 0 0 4.83-4H19a3 3 0 0 0 3-3v-2a3 3 0 0 0-3-3 7 7 0 0 0-7-7Zm1.45 3.275a4 4 0 0 0-4.352.976 1 1 0 0 0 1.452 1.376 2.001 2.001 0 0 1 2.836-.067 1 1 0 1 0 1.386-1.442 4 4 0 0 0-1.321-.843Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+
+                <span
+                  ><strong class="font-semibold text-text-primary"
+                    >Kundenfokus.</strong
+                  >
+                  Mir ist wichtig, die Wünsche der Kunden zu verstehen und
+                  Ergebnisse zu liefern, die wirklich überzeugen.</span
+                >
+              </li>
+            </ul>
+
+            <h3
+              class="inactive duration-700 whitespace-nowrap text-pretty font-semibold tracking-tight text-text-primary text-3xl titleFont headline-underline leading-[2.5rem] w-fit px-1 mt-20 mb-8"
+            >
+              Education.
+            </h3>
+            <ol
+              class="inactive duration-700 relative border-s border-text-primary"
+            >
+              <li class="mb-10 ms-4">
+                <div
+                  class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border border-text-primary bg-text-primary"
+                ></div>
+                <time
+                  class="mb-1 text-sm font-normal leading-none text-gray-500!"
+                  >September 2018 - jetzt</time
+                >
+                <h3
+                  class="flex gap-2 items-center mb-1 text-lg font-semibold text-text-primary"
+                >
+                  B.Sc. Medieninformatik
+                  <span
+                    class="flex whitespace-nowrap items-center gap-2 text-xs font-medium me-2 px-2.5 py-0.5 rounded bg-yellow-900 text-yellow-300!"
+                    >Im Prozess
+                    <div role="status">
+                      <!-- <svg
+                          aria-hidden="true"
+                          class="w-3 h-3 animate-spin text-gray-600 fill-yellow-600"
+                          viewBox="0 0 100 101"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                            fill="currentFill"
+                          />
+                        </svg> -->
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </span>
+                </h3>
+                <p class="mb-4 text-base font-normal text-gray-400!">
+                  Bachelor of Science, Hochschule Flenburg. <br />
+                  Studiengang Medieninformatik mit Schwerpunkt
+                  Medienprogrammierung, spezialisiert auf Softwareentwicklung
+                  und digitale Medien.
+                </p>
+              </li>
+              <li class="mb-10 ms-4">
+                <div
+                  class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border border-text-primary bg-text-primary"
+                ></div>
+                <time
+                  class="mb-1 text-sm font-normal leading-none text-gray-500!"
+                  >Juli 2017 - Juli 2018</time
+                >
+                <h3
+                  class="flex gap-2 items-center mb-1 text-lg font-semibold text-text-primary"
+                >
+                  Bundesfreiwilligendienstes
+                </h3>
+                <p class="text-base font-normal text-gray-400!">
+                  Tagesklinik für Psychiatrie und Psychotherapie, Bad Segeberg
+                </p>
+              </li>
+              <li class="mb-10 ms-4">
+                <div
+                  class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border border-text-primary bg-text-primary"
+                ></div>
+                <time
+                  class="mb-1 text-sm font-normal leading-none text-gray-500!"
+                  >Januar 2017 - Juli 2017</time
+                >
+                <h3
+                  class="flex gap-2 items-center mb-1 text-lg font-semibold text-text-primary"
+                >
+                  Die Welt bereist.🌏
+                </h3>
+                <p class="text-base font-normal text-gray-400!">
+                  Mit dem Auto durch Europa und einen Monat in Thailand
+                </p>
+              </li>
+              <li class="ms-4">
+                <div
+                  class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border border-text-primary bg-text-primary"
+                ></div>
+                <time
+                  class="mb-1 text-sm font-normal leading-none text-gray-500!"
+                  >Juli 2009 - Juli 2016
+                </time>
+                <h3
+                  class="flex gap-2 items-center mb-1 text-lg font-semibold text-text-primary"
+                >
+                  Fachabitur mit Hochschulreife
+                </h3>
+                <p class="text-base font-normal text-gray-400">
+                  Richard Hallmann Schule, Trappenkamp
+                </p>
+              </li>
+            </ol>
+            <h2
+              class="mt-16 text-2xl font-bold titleFont tracking-tight text-text-primary"
+            >
+              Wie ist meine Situation? Ganz einfach.
+            </h2>
+            <p class="mt-6">
+              Ich befinde mich aktuell in der Endphase meines Studiums und
+              schreibe meine Bachelorarbeit im Bereich Kotlin Multiplatform.
+              Nach meinem Abschluss strebe ich eine Stelle im Bereich
+              Webentwicklung an, um meine Kenntnisse in Frontend- und
+              Full-Stack-Entwicklung weiter zu vertiefen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

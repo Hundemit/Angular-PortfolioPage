@@ -1,0 +1,35 @@
+<!-- Projects -->
+
+<div id="myprojects" class="pt-32 duration-700">
+  <div>
+    <!-- Überschrift -->
+    <div
+      inViewport
+      (inViewportAction)="iVAS.animateSectionOnVisibility($event, '0.2s')"
+      class="mx-auto w-fit mb-3 inactive--from-bottom"
+    >
+      <span class="w-fit">
+        <span
+          class="titleFont text-4xl sm:text-6xl headline-underline text-text-primary"
+          >Meine Projekte.</span
+        >
+      </span>
+    </div>
+    <!-- Grids -->
+    <div
+      class="mx-auto w-fit grid item-center justify-center mt-12 sm:mt-24 lg:grid-cols-3 gap-y-5 gap-x-16"
+    >
+      <app-project-card
+        *ngFor="let project of projects | slice: 0 : count; let idx = index"
+        inViewport
+        (inViewportAction)="
+          iVAS.animateSectionOnVisibility($event, 0.6 + (idx + 1) * 0.1 + 's')
+        "
+        class="inactive--from-bottom"
+        [link]="project.link"
+        [imageSrc]="project.imageSrc"
+        [title]="project.title + (idx + 1)"
+      ></app-project-card>
+    </div>
+  </div>
+</div>
